@@ -7,13 +7,13 @@
 position = Vector2(42, 37)
 
 [node name="player" parent="." unique_id=505009200 instance=ExtResource("1_o5qli")]
-position = Vector2(404, 246)
-
-[node name="Camera2D" type="Camera2D" parent="player" unique_id=1087629026]
-position = Vector2(107, -86)
-zoom = Vector2(4.14, 2.818)
-position_smoothing_enabled = true
-rotation_smoothing_enabled = true
+position = Vector2(400, 246)
 
 [node name="Level_1" parent="." unique_id=1428729368 instance=ExtResource("2_0wfyh")]
 position = Vector2(376, 71)
+
+[node name="Camera2D" type="Camera2D" parent="Level_1" unique_id=1087629026]
+position = Vector2(131, 89)
+zoom = Vector2(4.14, 2.818)
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true

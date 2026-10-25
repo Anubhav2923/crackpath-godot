@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cypwv1k737gl" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://snay0wf2nt42" path="res://scenes/level_1.tscn" id="2_0wfyh"]
+[ext_resource type="Script" uid="uid://dovyppt52jgb" path="res://scripts/hud.gd" id="3_hudgd"]
 
 [node name="Node2D" type="Node2D" unique_id=646902309]
 position = Vector2(42, 37)
@@ -17,3 +18,6 @@ position = Vector2(131, 89)
 zoom = Vector2(4.14, 2.818)
 position_smoothing_enabled = true
 rotation_smoothing_enabled = true
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("3_hudgd")

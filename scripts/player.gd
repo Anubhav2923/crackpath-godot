@@ -9,6 +9,13 @@ signal slide_finished(moves_used: int, total_coins: int)
 @export var slide_speed: float = 180.0
 @export var swipe_threshold: float = 30.0
 
+# The move budget is NOT owned by the player.
+# It is supplied by the current level via configure_for_level().
+var move_budget: int = 0
+
+# Input stays locked until the level controller has configured this player.
+var is_configured: bool = false
+
 var is_sliding: bool = false
 var moving_to_cell: bool = false
 var slide_direction: Vector2 = Vector2.ZERO
@@ -28,8 +35,23 @@ func _ready() -> void:
 	add_to_group("player")
 
 
+## Called by the level controller at level start.
+## The level passes its own budget; the player only stores and enforces it.
+func configure_for_level(budget: int) -> void:
+	move_budget = budget
+	moves_used = 0
+	coins_collected = 0
+	is_sliding = false
+	moving_to_cell = false
+	slide_direction = Vector2.ZERO
+	is_configured = true
+	# Let the HUD read the fresh starting values immediately.
+	moves_changed.emit(moves_used)
+	coins_changed.emit(coins_collected)
+
+
 func _unhandled_input(event: InputEvent) -> void:
-	if is_sliding or moving_to_cell:
+	if not is_configured or is_sliding or moving_to_cell:
 		return
 
 	# Keyboard controls for desktop testing.
@@ -83,9 +105,13 @@ func _handle_swipe(swipe: Vector2) -> void:
 
 
 func _start_slide(direction: Vector2) -> void:
-	if is_sliding or moving_to_cell:
+	if not is_configured or is_sliding or moving_to_cell:
 		return
 
+	if moves_used >= move_budget :
+		print("No moves remaining")
+		return 
+		
 	slide_direction = direction
 	is_sliding = true
 	counted_this_swipe = false

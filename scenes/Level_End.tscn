@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bn6f0qgxeajf3"]
+
+[ext_resource type="Texture2D" uid="uid://bw5rvpborj2v3" path="res://assets/sprites/tilemap.png" id="1_jc3kr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvwgk"]
+atlas = ExtResource("1_jc3kr")
+region = Rect2(85, 120, 17, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l2rq7"]
+atlas = ExtResource("1_jc3kr")
+region = Rect2(102, 120, 17, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mc1ug"]
+atlas = ExtResource("1_jc3kr")
+region = Rect2(119, 120, 17, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg6nn"]
+atlas = ExtResource("1_jc3kr")
+region = Rect2(136, 120, 17, 15)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ph3tt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvwgk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l2rq7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mc1ug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hg6nn")
+}],
+"loop": 1,
+"name": &"treasuer_idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ph3tt"]
+size = Vector2(13.25, 10.5)
+
+[node name="Area2D" type="Area2D" unique_id=442045102]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1766310908]
+sprite_frames = SubResource("SpriteFrames_ph3tt")
+animation = &"treasuer_idle"
+autoplay = "treasuer_idle"
+frame_progress = 0.47276685
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=284282107]
+position = Vector2(-0.625, 0.25)
+shape = SubResource("RectangleShape2D_ph3tt")

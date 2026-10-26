@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bn6f0qgxeajf3"]
 
+[ext_resource type="Script" uid="uid://bayd223obxtg1" path="res://scripts/change_level.gd" id="1_bvwgk"]
 [ext_resource type="Texture2D" uid="uid://bw5rvpborj2v3" path="res://assets/sprites/tilemap.png" id="1_jc3kr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bvwgk"]
@@ -42,13 +43,16 @@ animations = [{
 size = Vector2(13.25, 10.5)
 
 [node name="Area2D" type="Area2D" unique_id=442045102]
+script = ExtResource("1_bvwgk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1766310908]
 sprite_frames = SubResource("SpriteFrames_ph3tt")
 animation = &"treasuer_idle"
 autoplay = "treasuer_idle"
-frame_progress = 0.47276685
+frame_progress = 0.46587253
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=284282107]
 position = Vector2(-0.625, 0.25)
 shape = SubResource("RectangleShape2D_ph3tt")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

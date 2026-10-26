@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="CRACKPATH"
-run/main_scene="uid://cmbantmyn5oaa"
+run/main_scene="uid://puiiundh2pea"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
 

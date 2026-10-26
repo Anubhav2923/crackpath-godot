@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bn6f0qgxeajf3" path="res://scenes/Level_End.tscn" id="3_rus8k"]
 [ext_resource type="PackedScene" uid="uid://cij1ywg5tlmko" path="res://scenes/coin.tscn" id="4_5xbjy"]
 [ext_resource type="Script" uid="uid://c8rfcgquq10sl" path="res://scripts/level_controller.gd" id="5_lvlctl"]
+[ext_resource type="PackedScene" uid="uid://cypwv1k737gl" path="res://scenes/player.tscn" id="6_fcfvj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bswci"]
 texture = ExtResource("2_0lo2a")
@@ -247,3 +248,15 @@ position = Vector2(40, 8)
 
 [node name="Area2D14" parent="." unique_id=1361363273 instance=ExtResource("4_5xbjy")]
 position = Vector2(73, 8)
+
+[node name="player" parent="." unique_id=505009200 instance=ExtResource("6_fcfvj")]
+position = Vector2(24, 175)
+
+[node name="HUDLayer" type="CanvasLayer" parent="." unique_id=485098530]
+
+[node name="HUDRoot" type="Control" parent="HUDLayer" unique_id=719190139]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -63.0
+offset_right = 40.0
+offset_bottom = -23.0

@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://cv80qfx7sjcnm" path="res://scripts/send_to_next_level.gd" id="1_erk2x"]
 [ext_resource type="Texture2D" uid="uid://btppw2n46lsjk" path="res://assets/textures/winner.png" id="1_wv5lq"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mc1ug"]
+bg_color = Color(0.021434633, 0.021434639, 0.021434614, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8q66"]
 bg_color = Color(0.21751276, 0.758504, 0.8213124, 1)
 
@@ -27,6 +30,7 @@ offset_right = 147.5
 offset_bottom = 116.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mc1ug")
 
 [node name="congratulation" type="Label" parent="." unique_id=1259271957]
 layout_mode = 1

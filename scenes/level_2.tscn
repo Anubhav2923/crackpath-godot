@@ -183,7 +183,7 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.25762072, 0.44640207, 0, 1)
 sources/0 = SubResource("TileSetAtlasSource_bswci")
 
-[node name="Level_1" type="Node2D" unique_id=1428729368]
+[node name="Level_2" type="Node2D" unique_id=1428729368]
 script = ExtResource("1_b4j7a")
 move_budget = 8
 
@@ -273,7 +273,7 @@ position = Vector2(44, 220)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=474668511]
 
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=482181095]
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=436286283]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -285,12 +285,12 @@ offset_bottom = 51.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=251329150]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1445821895]
 layout_mode = 1
-offset_left = 12.0
-offset_top = -40.999992
-offset_right = 252.0
-offset_bottom = -16.999992
+offset_left = 532.0
+offset_top = 263.0
+offset_right = 772.0
+offset_bottom = 287.0
 theme_override_constants/separation = 8
 
 [node name="coin_ui2" parent="CanvasLayer/Control/HBoxContainer" unique_id=1965187561 instance=ExtResource("7_6cvei")]
@@ -298,18 +298,17 @@ layout_mode = 2
 
 [node name="Undo_UI" parent="CanvasLayer/Control" unique_id=1633223132 instance=ExtResource("8_que50")]
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_bottom = 0.0
-offset_left = -977.0
-offset_top = -35.999985
-offset_right = -897.0
-offset_bottom = -13.999985
-grow_horizontal = 0
-grow_vertical = 1
+offset_left = -379.0
+offset_top = -24.999992
+offset_right = -236.0
+offset_bottom = 23.000008
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=726364862]
 z_index = -2
 position = Vector2(157.49998, 131.5)
 scale = Vector2(0.25922817, 0.2890625)
 texture = ExtResource("9_hey2k")
+
+[node name="Camera2D2" type="Camera2D" parent="." unique_id=2023677275]
+position = Vector2(159, 131)
+zoom = Vector2(3.645, 2.485)

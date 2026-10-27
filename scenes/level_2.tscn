@@ -287,9 +287,9 @@ grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=1445821895]
 layout_mode = 1
-offset_left = 532.0
+offset_left = 461.0
 offset_top = 263.0
-offset_right = 772.0
+offset_right = 701.0
 offset_bottom = 287.0
 theme_override_constants/separation = 8
 
@@ -298,10 +298,10 @@ layout_mode = 2
 
 [node name="Undo_UI" parent="CanvasLayer/Control" unique_id=1633223132 instance=ExtResource("8_que50")]
 layout_mode = 1
-offset_left = -379.0
-offset_top = -24.999992
-offset_right = -236.0
-offset_bottom = 23.000008
+offset_left = -396.0
+offset_top = -27.999992
+offset_right = -253.0
+offset_bottom = 20.000008
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=726364862]
 z_index = -2

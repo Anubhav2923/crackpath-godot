@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cqpmbmg3et6fy" path="res://scripts/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://cc35j0q7njuym" path="res://assets/textures/bg_mainMenu.png" id="1_l6cm7"]
+[ext_resource type="FontFile" uid="uid://diwfruuph0jlv" path="res://assets/Symtext.ttf" id="3_bqqt6"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ph3tt"]
 texture = ExtResource("1_l6cm7")
@@ -61,16 +62,18 @@ theme_override_constants/separation = 7
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bqqt6")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_ph3tt")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ph3tt")
 theme_override_styles/hover = SubResource("StyleBoxFlat_l6cm7")
-text = "Start game"
+text = "   Start game   "
 
 [node name="Button2" type="Button" parent="VBoxContainer" unique_id=2076021722]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bqqt6")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_ph3tt")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ph3tt")
@@ -85,12 +88,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -247.0
-offset_top = -209.0
-offset_right = 226.0
-offset_bottom = -50.0
+offset_left = -244.0
+offset_top = -215.0
+offset_right = 229.0
+offset_bottom = -44.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_bqqt6")
 theme_override_font_sizes/font_size = 57
 text = "CRACKPATH
 "

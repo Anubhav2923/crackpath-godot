@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bfls6h7k6mbgr"]
 
 [ext_resource type="Script" uid="uid://cn6m13ivnalry" path="res://scripts/undo_ui.gd" id="1_dppm5"]
+[ext_resource type="FontFile" uid="uid://diwfruuph0jlv" path="res://assets/Symtext.ttf" id="2_dppm5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ph3tt"]
 bg_color = Color(0.16470589, 0.16470589, 0.16470589, 1)
@@ -10,6 +11,8 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c8q66"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6cvei"]
 
 [node name="Undo_UI" type="Control" unique_id=1633223132]
 layout_mode = 3
@@ -25,7 +28,8 @@ anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -143.0
-offset_bottom = 44.0
+offset_top = -1.0
+offset_bottom = 43.0
 grow_horizontal = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ph3tt")
 
@@ -34,13 +38,15 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -142.0
-offset_top = 2.0
-offset_right = -1.0
-offset_bottom = 44.0
+offset_left = -143.0
+offset_top = -4.0
+offset_right = 2.0
+offset_bottom = 41.0
 grow_horizontal = 0
+theme_override_fonts/font = ExtResource("2_dppm5")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxEmpty_c8q66")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6cvei")
 text = "Undo"
 
 [connection signal="pressed" from="Button" to="." method="_on_undo_pressed"]

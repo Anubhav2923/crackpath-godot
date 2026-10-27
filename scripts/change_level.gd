@@ -56,6 +56,7 @@ func _on_body_entered(body: Node2D) -> void:
 	# Add to a CanvasLayer so the overlay renders in screen space,
 	# not world space. Without this, Camera2D zoom makes it invisible.
 	var canvas := CanvasLayer.new()
+	canvas.process_mode = Node.PROCESS_MODE_ALWAYS
 	canvas.layer = 10  # Render on top of everything else.
 	get_tree().current_scene.add_child(canvas)
 

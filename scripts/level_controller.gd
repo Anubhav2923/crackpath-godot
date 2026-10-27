@@ -93,7 +93,9 @@ func load_next_level() -> void:
 		return
 
 	if next_level_path.is_empty():
-		push_error("Set the Next Level Path in the Level Controller Inspector.")
+		push_warning("Next level path is not set; returning to main menu.")
+		get_tree().paused = false
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 		return
 
 	# Unpause the game before loading the next scene.

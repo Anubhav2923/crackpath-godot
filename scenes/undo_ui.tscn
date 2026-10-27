@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bfls6h7k6mbgr"]
+
+[ext_resource type="Texture2D" uid="uid://dm8vpxnnt02lm" path="res://assets/textures/replay.png" id="1_65t8m"]
+[ext_resource type="Script" uid="uid://cn6m13ivnalry" path="res://scripts/undo_ui.gd" id="1_dppm5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ph3tt"]
+bg_color = Color(0.16470589, 0.16470589, 0.16470589, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c8q66"]
+
+[node name="Undo_UI" type="Control" unique_id=1633223132]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dppm5")
+
+[node name="Panel" type="Panel" parent="." unique_id=1786272714]
+layout_mode = 0
+offset_right = 60.0
+offset_bottom = 15.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ph3tt")
+
+[node name="Button" type="Button" parent="." unique_id=1934391685]
+layout_mode = 0
+offset_right = 53.0
+offset_bottom = 14.0
+theme_override_font_sizes/font_size = 10
+theme_override_styles/normal = SubResource("StyleBoxEmpty_c8q66")
+text = "Undo"
+alignment = 2
+
+[node name="Replay" type="Sprite2D" parent="." unique_id=901714301]
+position = Vector2(14.999999, 7.0000014)
+scale = Vector2(0.02636719, 0.02246094)
+texture = ExtResource("1_65t8m")
+
+[connection signal="pressed" from="Button" to="." method="_on_undo_pressed"]

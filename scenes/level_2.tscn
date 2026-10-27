@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://bn6f0qgxeajf3" path="res://scenes/Level_End.tscn" id="4_ne2mo"]
 [ext_resource type="PackedScene" uid="uid://cij1ywg5tlmko" path="res://scenes/coin.tscn" id="5_6cvei"]
 [ext_resource type="PackedScene" uid="uid://cypwv1k737gl" path="res://scenes/player.tscn" id="5_wo48x"]
+[ext_resource type="PackedScene" uid="uid://562khjkjlegf" path="res://scenes/Level_UI_scene/coin_move_undo_ui.tscn" id="7_6cvei"]
+[ext_resource type="PackedScene" uid="uid://bfls6h7k6mbgr" path="res://scenes/undo_ui.tscn" id="8_que50"]
+[ext_resource type="Texture2D" uid="uid://mcnxglmr181x" path="res://assets/textures/game_bg_texture.png" id="9_hey2k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bswci"]
 texture = ExtResource("2_wo48x")
@@ -185,6 +188,7 @@ script = ExtResource("1_b4j7a")
 move_budget = 8
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=997372797]
+position = Vector2(20, 50.999992)
 tile_map_data = PackedByteArray("AAAAAAsAAAAAAAEAAAABAAsAAAAEAAEAAAACAAsAAAACAAEAAAADAAsAAAAHAAMAAAAEAAsAAAAEAAEAAAAFAAsAAAACAAEAAAAGAAsAAAAHAAMAAAAHAAsAAAAAAAEAAAAIAAsAAAAHAAMAAAAJAAsAAAACAAEAAAAKAAsAAAAHAAMAAAALAAsAAAACAAEAAAAMAAsAAAAEAAEAAAANAAsAAAAAAAEAAAAOAAsAAAAHAAMAAAAPAAsAAAACAAEAAAAQAAAAAAACAAEAAAAQAAEAAAAHAAMAAAAQAAMAAAAHAAMAAAAQAAQAAAAEAAEAAAAQAAUAAAAHAAMAAAAQAAYAAAAAAAEAAAAQAAcAAAAHAAMAAAAQAAgAAAAAAAEAAAAQAAkAAAAHAAMAAAAAAP//AAACAAEAAAABAP//AAAHAAMAAAACAP//AAACAAEAAAADAP//AAAEAAEAAAAEAP//AAAHAAMAAAAFAP//AAACAAEAAAAGAP//AAAEAAEAAAAHAP//AAAAAAEAAAAIAP//AAAHAAMAAAAJAP//AAACAAEAAAAKAP//AAAHAAMAAAALAP//AAACAAEAAAAMAP//AAAHAAMAAAANAP//AAAAAAEAAAAOAP//AAAHAAMAAAAQAAsAAAAAAAEAAAAQAP//AAAAAAEAAAAPAP//AAAEAAEAAAAQAAoAAAAEAAEAAAAAAAAAAAAAAAEAAAAAAAIAAAAHAAMAAAAAAAMAAAACAAEAAAAAAAQAAAAHAAMAAAAAAAUAAAAHAAMAAAAAAAYAAAACAAEAAAAAAAcAAAAEAAEAAAAAAAgAAAACAAEAAAAAAAkAAAAHAAMAAAAAAAoAAAACAAEAAAAQAAIAAAAAAAEAAAAAAAEAAAAEAAEAAAACAAkAAAABAAQAAAAGAAgAAAACAAEAAAAGAAcAAAABAAMAAAACAAgAAAACAAEAAAAFAAcAAAACAAEAAAAGAAkAAAACAAEAAAAHAAkAAAAHAAMAAAAEAAcAAAAHAAMAAAADAAgAAAAAAAEAAAACAAcAAAAEAAEAAAADAAcAAAABAAYAAAAFAAgAAAABAAYAAAAFAAkAAAAEAAEAAAAHAAgAAAAIAAcAAAAJAAkAAAABAAMAAAAJAAgAAAADAAgAAAAIAAcAAAACAAUAAAAJAAYAAAADAAQAAAAJAAcAAAADAAUAAAAKAAcAAAAEAAUAAAAKAAkAAAAEAAEAAAAKAAgAAAACAAEAAAAMAAcAAAAHAAMAAAAMAAgAAAAHAAMAAAAMAAkAAAACAAEAAAANAAcAAAACAAEAAAAOAAkAAAACAAEAAAANAAkAAAAEAAEAAAANAAgAAAAHAAQAAAANAAUAAAAEAAEAAAALAAQAAAAEAAEAAAALAAMAAAACAAEAAAAMAAQAAAACAAEAAAAMAAUAAAACAAEAAAALAAUAAAABAAMAAAAKAAQAAAABAAMAAAAKAAMAAAABAAYAAAAMAAIAAAAEAAkAAAANAAIAAAAEAAkAAAAOAAIAAAAEAAkAAAAMAAMAAAAEAAoAAAANAAMAAAAEAAoAAAANAAQAAAAEAAoAAAAOAAMAAAAEAAoAAAAOAAQAAAAEAAoAAAAOAAUAAAAEAAoAAAAOAAEAAAABAAMAAAANAAEAAAAEAAEAAAALAAEAAAAEAAEAAAAMAAEAAAACAAEAAAAPAAcAAAACAAEAAAADAAEAAAAHAAMAAAAHAAEAAAAHAAMAAAAGAAIAAAAHAAMAAAAHAAQAAAAHAAMAAAAHAAIAAAACAAEAAAAGAAQAAAACAAEAAAAIAAIAAAACAAEAAAAGAAEAAAACAAEAAAAEAAMAAAACAAEAAAAEAAUAAAACAAEAAAAIAAYAAAACAAEAAAADAAUAAAACAAEAAAACAAUAAAACAAEAAAAEAAQAAAAAAAEAAAADAAQAAAAAAAUAAAADAAMAAAAAAAMAAAACAAQAAAAIAAcAAAALAAIAAAAHAAQAAAAIAAEAAAABAAYAAAAIAAUAAAABAAYAAAAEAAIAAAABAAYAAAAMAAAAAAABAAYAAAAPAAYAAAABAAYAAAAOAAgAAAAIAAUAAAAJAAIAAAAEAAEAAAACAAIAAAACAAEAAAABAAIAAAACAAEAAAABAAEAAAABAAYAAAACAAEAAAABAAYAAAA=")
 tile_set = SubResource("TileSet_gkh53")
 
@@ -202,67 +206,110 @@ scale = Vector2(1.0898438, 1.215909)
 texture = ExtResource("3_y0kc7")
 
 [node name="Area2D" parent="." unique_id=442045102 instance=ExtResource("4_ne2mo")]
-position = Vector2(25, 168)
+position = Vector2(45, 219)
 
 [node name="player" parent="." unique_id=505009200 instance=ExtResource("5_wo48x")]
-position = Vector2(24, 15)
+position = Vector2(44, 65.99999)
 
 [node name="Coin" parent="." unique_id=1088366165 instance=ExtResource("5_6cvei")]
-position = Vector2(57, 7)
+position = Vector2(77, 57.999992)
 
 [node name="Coin2" parent="." unique_id=1532143000 instance=ExtResource("5_6cvei")]
-position = Vector2(91, 7)
+position = Vector2(111, 57.999992)
 
 [node name="Coin3" parent="." unique_id=971556218 instance=ExtResource("5_6cvei")]
-position = Vector2(122, 7)
+position = Vector2(142, 57.999992)
 
 [node name="Coin4" parent="." unique_id=2034214538 instance=ExtResource("5_6cvei")]
-position = Vector2(153, 7)
+position = Vector2(173, 57.999992)
 
 [node name="Coin5" parent="." unique_id=2124996919 instance=ExtResource("5_6cvei")]
-position = Vector2(187, 7)
+position = Vector2(207, 57.999992)
 
 [node name="Coin6" parent="." unique_id=210424159 instance=ExtResource("5_6cvei")]
-position = Vector2(233, 9)
+position = Vector2(253, 59.999992)
 
 [node name="Coin7" parent="." unique_id=72023199 instance=ExtResource("5_6cvei")]
-position = Vector2(249, 40)
+position = Vector2(269, 90.99999)
 
 [node name="Coin8" parent="." unique_id=774997569 instance=ExtResource("5_6cvei")]
-position = Vector2(249, 74)
+position = Vector2(269, 124.99999)
 
 [node name="Coin9" parent="." unique_id=1441473104 instance=ExtResource("5_6cvei")]
-position = Vector2(249, 106)
+position = Vector2(269, 157)
 
 [node name="Coin10" parent="." unique_id=774924516 instance=ExtResource("5_6cvei")]
-position = Vector2(153, 169)
+position = Vector2(173, 220)
 
 [node name="Coin11" parent="." unique_id=2003015090 instance=ExtResource("5_6cvei")]
-position = Vector2(122, 168)
+position = Vector2(142, 219)
 
 [node name="Coin12" parent="." unique_id=942782915 instance=ExtResource("5_6cvei")]
-position = Vector2(91, 168)
+position = Vector2(111, 219)
 
 [node name="Coin13" parent="." unique_id=2001473124 instance=ExtResource("5_6cvei")]
-position = Vector2(57, 168)
+position = Vector2(77, 219)
 
 [node name="Coin14" parent="." unique_id=843405915 instance=ExtResource("5_6cvei")]
-position = Vector2(88, 104)
+position = Vector2(108, 155)
 
 [node name="Coin15" parent="." unique_id=782750989 instance=ExtResource("5_6cvei")]
-position = Vector2(88, 74)
+position = Vector2(108, 124.99999)
 
 [node name="Coin16" parent="." unique_id=775221023 instance=ExtResource("5_6cvei")]
-position = Vector2(136, 54)
+position = Vector2(156, 104.99999)
 
 [node name="Coin17" parent="." unique_id=92687149 instance=ExtResource("5_6cvei")]
-position = Vector2(25, 55)
+position = Vector2(45, 105.99999)
 
 [node name="Coin18" parent="." unique_id=1712366056 instance=ExtResource("5_6cvei")]
-position = Vector2(25, 74)
+position = Vector2(45, 124.99999)
 
 [node name="Coin19" parent="." unique_id=761245631 instance=ExtResource("5_6cvei")]
-position = Vector2(24, 121)
+position = Vector2(44, 172)
 
 [node name="Coin20" parent="." unique_id=263404044 instance=ExtResource("5_6cvei")]
-position = Vector2(24, 169)
+position = Vector2(44, 220)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=474668511]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=482181095]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 50.999992
+offset_right = 20.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=251329150]
+layout_mode = 1
+offset_left = 12.0
+offset_top = -40.999992
+offset_right = 252.0
+offset_bottom = -16.999992
+theme_override_constants/separation = 8
+
+[node name="coin_ui2" parent="CanvasLayer/Control/HBoxContainer" unique_id=1965187561 instance=ExtResource("7_6cvei")]
+layout_mode = 2
+
+[node name="Undo_UI" parent="CanvasLayer/Control" unique_id=1633223132 instance=ExtResource("8_que50")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_left = -977.0
+offset_top = -35.999985
+offset_right = -897.0
+offset_bottom = -13.999985
+grow_horizontal = 0
+grow_vertical = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=726364862]
+z_index = -2
+position = Vector2(157.49998, 131.5)
+scale = Vector2(0.25922817, 0.2890625)
+texture = ExtResource("9_hey2k")

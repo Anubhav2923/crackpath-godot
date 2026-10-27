@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://562khjkjlegf"]
+
+[ext_resource type="Script" uid="uid://db0afgrh1pp5l" path="res://scripts/coin_move_undo_ui.gd" id="1_84qwg"]
+[ext_resource type="Texture2D" uid="uid://b31xgeqicf0lb" path="res://assets/sprites/coin.png" id="1_fb7q1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ph3tt"]
+bg_color = Color(0.16470589, 0.16470589, 0.16470589, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="coin_ui" type="Control" unique_id=1965187561]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_84qwg")
+
+[node name="moves_used" type="Control" parent="." unique_id=1764688051]
+anchors_preset = 0
+offset_left = 58.0
+offset_right = 152.0
+offset_bottom = 20.0
+
+[node name="Panel" type="Panel" parent="moves_used" unique_id=260431422]
+layout_mode = 0
+offset_top = 5.0
+offset_right = 93.0
+offset_bottom = 20.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ph3tt")
+
+[node name="Label" type="Label" parent="moves_used" unique_id=316658693]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = 59.0
+offset_bottom = 18.0
+theme_override_colors/font_color = Color(0.57892233, 0.9999998, 0.4480338, 1)
+theme_override_font_sizes/font_size = 8
+text = " Moves Used: "
+vertical_alignment = 1
+
+[node name="current_move" type="Label" parent="moves_used" unique_id=837770059]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 5.0
+offset_right = 71.0
+offset_bottom = 19.0
+theme_override_font_sizes/font_size = 10
+text = "0"
+vertical_alignment = 1
+
+[node name="total_moves" type="Label" parent="moves_used" unique_id=76039867]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 5.0
+offset_right = 85.0
+offset_bottom = 19.0
+theme_override_font_sizes/font_size = 10
+text = "08"
+vertical_alignment = 1
+
+[node name="slash" type="Label" parent="moves_used" unique_id=683643198]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 5.0
+offset_right = 73.0
+offset_bottom = 19.0
+theme_override_font_sizes/font_size = 10
+text = "/"
+vertical_alignment = 1
+
+[node name="Coin_UI" type="Control" parent="." unique_id=1121083048]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel2" type="Panel" parent="Coin_UI" unique_id=1966592924]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 5.0
+offset_right = 54.0
+offset_bottom = 20.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ph3tt")
+
+[node name="Label" type="Label" parent="Coin_UI" unique_id=399744260]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 6.0
+offset_right = 49.0
+offset_bottom = 18.0
+theme_override_colors/font_color = Color(0.57892233, 0.9999998, 0.4480338, 1)
+theme_override_font_sizes/font_size = 8
+text = "0"
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="Coin_UI" unique_id=248802277]
+position = Vector2(28, 12)
+texture = ExtResource("1_fb7q1")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)

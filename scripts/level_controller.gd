@@ -7,6 +7,7 @@ signal state_changed(moves_used: int, move_budget: int, coins_collected: int, co
 signal level_won(moves_used: int, coins_collected: int)
 
 @export_range(1, 999, 1) var move_budget: int = 6
+@export_file("*.tscn") var next_level_path: String = ""
 
 var coin_total: int = 0
 var coins_collected: int = 0
@@ -84,3 +85,23 @@ func report_goal_reached() -> void:
 
 func _emit_state() -> void:
 	state_changed.emit(moves_used, move_budget, coins_collected, coin_total)
+
+
+func load_next_level() -> void:
+	if not _won:
+		push_warning("Cannot advance: the current level has not been won.")
+		return
+
+	if next_level_path.is_empty():
+		push_error("Set the Next Level Path in the Level Controller Inspector.")
+		return
+
+	# Unpause the game before loading the next scene.
+	get_tree().paused = false
+
+	var error := get_tree().change_scene_to_file(next_level_path)
+
+	if error != OK:
+		push_error(
+			"Failed to load the next level. Error code: " + str(error)
+		)

@@ -25,6 +25,12 @@ var moves_used: int = 0
 var coins_collected: int = 0
 var counted_this_swipe: bool = false
 
+
+# One snapshot is saved for each valid state
+var undo_history : Array[Dictionary]= []
+
+var collected_coin_nodes : Array[Node] = []
+
 var touch_start: Vector2 = Vector2.ZERO
 var touch_active: bool = false
 var mouse_start: Vector2 = Vector2.ZERO
@@ -37,28 +43,35 @@ func _ready() -> void:
 
 ## Called by the level controller at level start.
 ## The level passes its own budget; the player only stores and enforces it.
+
 func configure_for_level(budget: int) -> void:
 	move_budget = budget
 	moves_used = 0
 	coins_collected = 0
+
+	undo_history.clear()
+	collected_coin_nodes.clear()
+
 	is_sliding = false
 	moving_to_cell = false
 	slide_direction = Vector2.ZERO
+	counted_this_swipe = false
+	target_position = global_position
+	velocity = Vector2.ZERO
+
 	is_configured = true
-	# Let the HUD read the fresh starting values immediately.
+
 	moves_changed.emit(moves_used)
 	coins_changed.emit(coins_collected)
 
-
-func _unhandled_input(event: InputEvent) -> void:
+func _input(event: InputEvent) -> void:
 	if not is_configured or is_sliding or moving_to_cell:
 		return
 
-	# Keyboard controls for desktop testing.
+	# ── Keyboard (desktop / editor testing) ───────────────────────────────────
 	if event is InputEventKey:
 		if not event.pressed or event.echo:
 			return
-
 		if event.keycode == KEY_UP or event.keycode == KEY_W:
 			_start_slide(Vector2.UP)
 		elif event.keycode == KEY_DOWN or event.keycode == KEY_S:
@@ -68,16 +81,28 @@ func _unhandled_input(event: InputEvent) -> void:
 		elif event.keycode == KEY_RIGHT or event.keycode == KEY_D:
 			_start_slide(Vector2.RIGHT)
 
-	# Touchscreen swipe controls.
+	# ── Touch: finger press → record start ───────────────────────────────────
 	elif event is InputEventScreenTouch:
 		if event.pressed:
 			touch_start = event.position
 			touch_active = true
 		elif touch_active:
+			# Finger lifted — compute swipe from start to current position.
 			touch_active = false
 			_handle_swipe(event.position - touch_start)
 
-	# Mouse dragging makes testing easier on Windows.
+	# ── Touch: finger drag → keep updating end position ──────────────────────
+	# This ensures that even if the touch-up position is imprecise we still
+	# have the last known drag position to measure the swipe against.
+	elif event is InputEventScreenDrag:
+		if touch_active:
+			# Check threshold already — fire swipe as soon as it's far enough.
+			var delta: Vector2 = event.position - touch_start
+			if delta.length() >= swipe_threshold:
+				touch_active = false
+				_handle_swipe(delta)
+
+	# ── Mouse drag (editor / desktop testing) ────────────────────────────────
 	elif event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
@@ -124,11 +149,11 @@ func _physics_process(delta: float) -> void:
 		_begin_next_cell()
 
 
+
 func _begin_next_cell() -> void:
 	var motion: Vector2 = slide_direction * tile_size
 
-	# Test the entire next cell before moving.
-	# Walls, rocks, crates and water must have physics shapes.
+	# A blocked slide must not consume a move or create history.
 	if test_move(global_transform, motion, null, 0.01):
 		_finish_slide()
 		return
@@ -136,12 +161,13 @@ func _begin_next_cell() -> void:
 	target_position = global_position + motion
 	moving_to_cell = true
 
-	# One swipe is one move, regardless of how many cells it crosses.
+	# Save state once per slide, not once per cell.
 	if not counted_this_swipe:
+		_save_undo_snapshot()
+
 		counted_this_swipe = true
 		moves_used += 1
 		moves_changed.emit(moves_used)
-
 
 func _move_toward_cell(delta: float) -> void:
 	var remaining: Vector2 = target_position - global_position
@@ -174,8 +200,75 @@ func _finish_slide() -> void:
 	slide_finished.emit(moves_used, coins_collected)
 
 
-func collect_coin(value: int = 1) -> void:
+func collect_coin(value: int = 1, coin: Node = null) -> void:
 	coins_collected += value
-	coins_changed.emit(coins_collected)
 
+	if coin != null and not collected_coin_nodes.has(coin):
+		collected_coin_nodes.append(coin)
+
+	coins_changed.emit(coins_collected)
 	print("Coin collected! Total: ", coins_collected)
+
+
+func _save_undo_snapshot() -> void:
+	var snapshot: Dictionary = {
+		"position": global_position,
+		"moves_used": moves_used,
+		"coins_collected": coins_collected,
+		"collected_coin_nodes": collected_coin_nodes.duplicate()
+	}
+
+	undo_history.append(snapshot)
+
+
+func undo_last_move() -> void:
+	if not is_configured:
+		return
+
+	# Never teleport the player while a slide is in progress.
+	if is_sliding or moving_to_cell:
+		print("Undo unavailable while the player is sliding.")
+		return
+
+	if undo_history.is_empty():
+		print("Nothing to undo.")
+		return
+
+	var snapshot: Dictionary = undo_history.pop_back()
+	var previous_coins: Array = snapshot["collected_coin_nodes"]
+
+	# Restore coins collected during the slide being undone.
+	for coin in collected_coin_nodes:
+		if not is_instance_valid(coin):
+			continue
+
+		if not previous_coins.has(coin):
+			if coin.has_method("restore_coin"):
+				coin.call("restore_coin")
+
+	# Restore the collection history.
+	collected_coin_nodes.clear()
+
+	for coin in previous_coins:
+		if is_instance_valid(coin):
+			collected_coin_nodes.append(coin)
+
+	# Restore the player's previous state.
+	global_position = snapshot["position"]
+	target_position = global_position
+
+	moves_used = int(snapshot["moves_used"])
+	coins_collected = int(snapshot["coins_collected"])
+
+	is_sliding = false
+	moving_to_cell = false
+	slide_direction = Vector2.ZERO
+	counted_this_swipe = false
+	velocity = Vector2.ZERO
+
+	# Notify the level controller and any connected UI.
+	moves_changed.emit(moves_used)
+	coins_changed.emit(coins_collected)
+	slide_finished.emit(moves_used, coins_collected)
+
+	print("Move undone. Moves used: ", moves_used)

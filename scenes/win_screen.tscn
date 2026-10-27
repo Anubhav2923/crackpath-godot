@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://cus6vlt1hdpvf"]
+
+[ext_resource type="Script" uid="uid://cv80qfx7sjcnm" path="res://scripts/send_to_next_level.gd" id="1_erk2x"]
+[ext_resource type="Texture2D" uid="uid://btppw2n46lsjk" path="res://assets/textures/winner.png" id="1_wv5lq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8q66"]
+bg_color = Color(0.21751276, 0.758504, 0.8213124, 1)
+
+[node name="winScreen" type="Control" unique_id=384882016]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=1648025860]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -147.5
+offset_top = -116.5
+offset_right = 147.5
+offset_bottom = 116.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="congratulation" type="Label" parent="." unique_id=1259271957]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -68.0
+offset_right = 137.0
+offset_bottom = -31.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Congratualions!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="youwin" type="Label" parent="." unique_id=419451942]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -39.0
+offset_right = 42.0
+offset_bottom = -2.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "You Win"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="nextLevel" type="Button" parent="." unique_id=911690883]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = 59.0
+offset_right = 45.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_c8q66")
+text = "Next Level"
+script = ExtResource("1_erk2x")
+
+[node name="WinnerPng" type="Sprite2D" parent="." unique_id=1673721294]
+position = Vector2(576, 346)
+scale = Vector2(0.103515625, 0.07421875)
+texture = ExtResource("1_wv5lq")
